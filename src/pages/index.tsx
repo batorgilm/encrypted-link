@@ -3,6 +3,7 @@ import { useState } from "react";
 import { excelParser } from "@/utils/excelParser";
 import { map } from "lodash";
 import { encrypt } from "@/utils/crypto";
+import { sendChat } from "@/utils/teams";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -15,11 +16,14 @@ export default function Home() {
     setItems(parsedData);
   };
 
+  // const onClick = async () => {
+  //   map(items, (e) => {
+  //     const temp: any = encrypt(e);
+  //     setEncryptedArray(temp);
+  //   });
+  // };
   const onClick = async () => {
-    map(items, (e) => {
-      const temp: any = encrypt(e);
-      setEncryptedArray(temp);
-    });
+    sendChat();
   };
   console.log(encryptedArray);
   return (

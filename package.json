@@ -2,6 +2,9 @@
   "name": "mail-service-with-nextjs",
   "version": "0.1.0",
   "private": true,
+  "browser": {
+    "child_process": false
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,12 +12,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@azure/identity": "^3.2.4",
     "@emailjs/browser": "^3.11.0",
+    "@microsoft/microsoft-graph-client": "^3.0.5",
     "@sendinblue/client": "^3.3.1",
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "aws-sdk": "^2.1415.0",
+    "child_process": "^1.0.2",
     "crypto-js": "^4.1.1",
     "emailjs": "^4.0.2",
     "lodash": "^4.17.21",
@@ -28,6 +34,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@microsoft/microsoft-graph-types": "^2.35.0",
     "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.195",
     "@types/nodemailer": "^6.4.8"
