@@ -8,17 +8,13 @@ export const sendChat = async () => {
 
   try {
     const credential = new ClientSecretCredential(
+      TENANT_ID,
       CLIENT_ID,
-      CLIENT_SECRET,
-      TENANT_ID
+      CLIENT_SECRET
     );
 
     const authProvider = new TokenCredentialAuthenticationProvider(credential, {
-      scopes: [
-        "https://graph.microsoft.com/.default",
-        "Chat.create",
-        "Chat.ReadWrite",
-      ],
+      scopes: ["https://graph.microsoft.com/.default"],
     });
 
     const graphClient = Client.initWithMiddleware({
