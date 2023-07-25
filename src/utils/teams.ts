@@ -3,8 +3,8 @@ import { Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 export const sendChat = async () => {
   const CLIENT_ID = "404659cf-07ec-4947-bd24-58afa86de474";
-  const CLIENT_SECRET = "3228a32e-4d2a-40db-853b-e382156f9985";
-  const TENANT_ID = "aae8fbe2-488b-49d9-b471-e4be61674a71 ";
+  const CLIENT_SECRET = "5Ws8Q~nh4MsFub4gRVYxQf0_IMPIHwdEMNLR6cos";
+  const TENANT_ID = "aae8fbe2-488b-49d9-b471-e4be61674a71";
 
   try {
     const credential = new ClientSecretCredential(
