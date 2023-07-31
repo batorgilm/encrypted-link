@@ -89,7 +89,7 @@
   dependencies:
     tslib "^2.2.0"
 
-"@azure/msal-browser@^2.37.1":
+"@azure/msal-browser@^2.37.1", "@azure/msal-browser@^2.38.0":
   version "2.38.0"
   resolved "https://registry.yarnpkg.com/@azure/msal-browser/-/msal-browser-2.38.0.tgz#c3621dc4cc9bf8c5589ec3e4474a63d6985ebd6b"
   integrity sha512-gxBh83IumHgEP9uMCm9pJLKLRwICMQTxG9TX3AytdNt3oLUI3tytm/szYD5u5zKJgSkhHvwFSM+NPnM04hYw3w==
@@ -109,6 +109,18 @@
     "@azure/msal-common" "13.2.0"
     jsonwebtoken "^9.0.0"
     uuid "^8.3.0"
+
+"@azure/msal-react@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@azure/msal-react/-/msal-react-1.5.9.tgz#8a7c941deabe7bf365204ada1711146846c64825"
+  integrity sha512-OqlBmo3h2ucp+OtpXwjNcKaUdIwRMUoEcixZz9rKzHJJ8VR7rngy2pHf+4tCTqwQXQOsRKdneNKG3Osh/AAhzg==
+
+"@azure/msal@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@azure/msal/-/msal-1.4.5.tgz#bf55491e6ea738c888fbc5f562b078fb4ab74721"
+  integrity sha512-ux+Bu5Na/PvTAoFTQxm/EDbUTuesxGEEuWDeJyjz2ep5a8y2VPfYdGSAi8Iz06cKlCTFT+4gSHb74FWboRiSkw==
+  dependencies:
+    tslib "^1.9.3"
 
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.21.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.7":
   version "7.22.6"
@@ -1374,6 +1386,11 @@ tough-cookie@~2.5.0:
   dependencies:
     psl "^1.1.28"
     punycode "^2.1.1"
+
+tslib@^1.9.3:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tslib@^2.2.0:
   version "2.6.1"

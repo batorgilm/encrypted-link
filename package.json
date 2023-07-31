@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@azure/identity": "^3.2.4",
+    "@azure/msal": "^1.4.5",
+    "@azure/msal-browser": "^2.38.0",
+    "@azure/msal-react": "^1.5.9",
     "@emailjs/browser": "^3.11.0",
     "@microsoft/microsoft-graph-client": "^3.0.5",
     "@sendinblue/client": "^3.3.1",

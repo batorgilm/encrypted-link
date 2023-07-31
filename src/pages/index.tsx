@@ -1,11 +1,17 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { excelParser } from "@/utils/excelParser";
 import { map } from "lodash";
 import { encrypt } from "@/utils/crypto";
-import { sendChat } from "@/utils/teams";
+import sendChat from "@/utils/teams";
+import { useMsal } from "@azure/msal-react";
+
+import { loginRequest } from "@/utils/config";
+import axios from "axios";
 
 export default function Home() {
+  const { instance, accounts } = useMsal();
+
   const [items, setItems] = useState([]);
   const [encryptedArray, setEncryptedArray] = useState([]);
 
@@ -16,16 +22,71 @@ export default function Home() {
     setItems(parsedData);
   };
 
-  // const onClick = async () => {
-  //   map(items, (e) => {
-  //     const temp: any = encrypt(e);
-  //     setEncryptedArray(temp);
-  //   });
-  // };
   const onClick = async () => {
-    sendChat();
+    const a = await instance.acquireTokenRedirect(loginRequest).catch((e) => {
+      console.log(e);
+    });
+    console.log(a);
   };
-  console.log(encryptedArray);
+
+  const testMails = [
+    {
+      sendTo: "nasanbat.g@nest.edu.mn",
+      message: "Hi",
+    },
+    {
+      sendTo: "turbold.ch@nest.edu.mn",
+      message: "Hi",
+    },
+    {
+      sendTo: "zolboo.o@nest.edu.mn",
+      message: "Hi",
+    },
+    {
+      sendTo: "anand-ochir.u@nest.edu.mn",
+      message: "Hi",
+    },
+    {
+      sendTo: "altundrakh.g@pinecone.mn",
+      message: "Hi",
+    },
+  ];
+
+  const sendChat = async () => {
+    const accessTokenRequest = {
+      scopes: ["Chat.Create", "Chat.ReadWrite", "ChatMessage.Send"],
+      account: instance.getAllAccounts()[0],
+    };
+
+    let accessToken: any;
+
+    await instance
+      .acquireTokenSilent(accessTokenRequest)
+      .then((tokenResponse) => {
+        accessToken = tokenResponse.accessToken;
+      })
+      .catch((error) => {
+        console.log(error);
+        instance.acquireTokenRedirect(accessTokenRequest);
+      });
+
+    const promises = testMails.map((mail) =>
+      axios.post(
+        "/api/teams",
+        {
+          sendTo: mail.sendTo,
+          message: mail.message,
+        },
+        {
+          headers: {
+            Authorization: accessToken,
+          },
+        }
+      )
+    );
+    Promise.all(promises).then((res) => console.log(res));
+  };
+
   return (
     <>
       <Head>
@@ -38,7 +99,8 @@ export default function Home() {
         <div>
           <input type="file" onChange={changeHandler} />
         </div>
-        <button onClick={onClick}>Send</button>
+        <button onClick={onClick}>Login</button>
+        <button onClick={sendChat}>Send</button>
       </main>
     </>
   );
